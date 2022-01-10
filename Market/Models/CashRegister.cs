@@ -19,7 +19,7 @@ namespace Market.Models
             PaymentType = paymentType;
         }
 
-        void AddNewSale(double amount, Currency currency)
+        public void AddNewSale(double amount, Currency currency)
         {
             TotalSalesCount++;
 
@@ -39,7 +39,7 @@ namespace Market.Models
             TotalAmount += amount;
         }
 
-        void RemoveSale(double amount, Currency currency)
+        public void RemoveSale(double amount, Currency currency)
         {
             TotalSalesCount--;
 
@@ -57,6 +57,11 @@ namespace Market.Models
             }
 
             TotalAmount -= amount;
+        }
+
+        public override string ToString()
+        {
+            return $"{TotalAmount}";
         }
     }
 }

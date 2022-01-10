@@ -1,0 +1,14 @@
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.exe
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.deps.json
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.runtimeconfig.json
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.runtimeconfig.dev.json
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.dll
+C:\Users\kamilag\source\repos\Market\Market\bin\Debug\netcoreapp3.1\Market.pdb
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.csproj.AssemblyReference.cache
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.AssemblyInfoInputs.cache
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.AssemblyInfo.cs
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.csproj.CoreCompileInputs.cache
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.dll
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.pdb
+C:\Users\kamilag\source\repos\Market\Market\obj\Debug\netcoreapp3.1\Market.genruntimeconfig.cache

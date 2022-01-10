@@ -61,7 +61,7 @@ namespace Market.Models
 
         public override string ToString()
         {
-            return $"{TotalAmount}";
+            return $"Satis sayi: {TotalSalesCount}\nKassadaki pul: {TotalAmount} AZN";
         }
     }
 }

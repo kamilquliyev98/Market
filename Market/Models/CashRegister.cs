@@ -10,7 +10,7 @@ namespace Market.Models
         public double TotalAmount { get; set; }
         public Currency Currency { get; set; }
         public PaymentType PaymentType { get; set; }
-        public static int TotalSalesCount = 0;
+        public int TotalSalesCount = 0;
 
         public CashRegister(double totalAmount, Currency currency = Currency.AZN, PaymentType paymentType = PaymentType.Cash)
         {
@@ -19,44 +19,85 @@ namespace Market.Models
             PaymentType = paymentType;
         }
 
-        public void AddNewSale(double amount, Currency currency)
+        public void AddNewSale(double price, Currency currency)
         {
-            TotalSalesCount++;
-
-            switch ((int)currency)
+            switch (Currency)
             {
-                case (int)Currency.TRY:
-                    amount *= 0.12;
+                case Currency.AZN:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount += price;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount += price * 0.122564;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount += price * 1.9267;
+                            break;
+                        case Currency.USD:
+                            TotalAmount += price * 1.69898;
+                            break;
+                    }
                     break;
-                case (int)Currency.EUR:
-                    amount *= 1.92;
+                case Currency.TRY:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount += price * 8.159;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount += price;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount += price * 15.72;
+                            break;
+                        case Currency.USD:
+                            TotalAmount += price * 13.85;
+                            break;
+                    }
                     break;
-                case (int)Currency.USD:
-                    amount *= 1.7;
+                case Currency.EUR:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount += price * 0.51888;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount += price * 0.0636090946;
+                            break;
+                        case Currency.EUR:
+                            break;
+                        case Currency.USD:
+                            break;
+                    }
+                    break;
+                case Currency.USD:
+                    price *= 1.7;
                     break;
             }
 
-            TotalAmount += amount;
+            
+            TotalSalesCount++;
         }
 
-        public void RemoveSale(double amount, Currency currency)
+        public void RemoveSale(double price, Currency currency)
         {
-            TotalSalesCount--;
-
             switch ((int)currency)
             {
                 case (int)Currency.TRY:
-                    amount *= 0.12;
+                    price *= 0.12;
                     break;
                 case (int)Currency.EUR:
-                    amount *= 1.92;
+                    price *= 1.92;
                     break;
                 case (int)Currency.USD:
-                    amount *= 1.7;
+                    price *= 1.7;
                     break;
             }
 
-            TotalAmount -= amount;
+            TotalAmount -= price;
+            TotalSalesCount--;
         }
 
         public override string ToString()

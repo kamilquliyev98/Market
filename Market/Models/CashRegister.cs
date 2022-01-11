@@ -12,7 +12,7 @@ namespace Market.Models
         public PaymentType PaymentType { get; set; }
         public int TotalSalesCount = 0;
 
-        public CashRegister(double totalAmount, Currency currency = Currency.AZN, PaymentType paymentType = PaymentType.Cash)
+        public CashRegister(double totalAmount, Currency currency, PaymentType paymentType)
         {
             TotalAmount = totalAmount;
             Currency = currency;
@@ -30,13 +30,13 @@ namespace Market.Models
                             TotalAmount += price;
                             break;
                         case Currency.TRY:
-                            TotalAmount += price * 0.122564;
+                            TotalAmount += price * 0.12;
                             break;
                         case Currency.EUR:
-                            TotalAmount += price * 1.9267;
+                            TotalAmount += price * 1.93;
                             break;
                         case Currency.USD:
-                            TotalAmount += price * 1.69898;
+                            TotalAmount += price * 1.70;
                             break;
                     }
                     break;
@@ -44,7 +44,7 @@ namespace Market.Models
                     switch (currency)
                     {
                         case Currency.AZN:
-                            TotalAmount += price * 8.159;
+                            TotalAmount += price * 8.13;
                             break;
                         case Currency.TRY:
                             TotalAmount += price;
@@ -53,7 +53,7 @@ namespace Market.Models
                             TotalAmount += price * 15.72;
                             break;
                         case Currency.USD:
-                            TotalAmount += price * 13.85;
+                            TotalAmount += price * 13.82;
                             break;
                     }
                     break;
@@ -61,48 +61,123 @@ namespace Market.Models
                     switch (currency)
                     {
                         case Currency.AZN:
-                            TotalAmount += price * 0.51888;
+                            TotalAmount += price * 0.52;
                             break;
                         case Currency.TRY:
-                            TotalAmount += price * 0.0636090946;
+                            TotalAmount += price * 0.064;
                             break;
                         case Currency.EUR:
+                            TotalAmount += price;
                             break;
                         case Currency.USD:
+                            TotalAmount += price * 0.88;
                             break;
                     }
                     break;
                 case Currency.USD:
-                    price *= 1.7;
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount += price * 0.59;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount += price * 0.072;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount += price * 1.14;
+                            break;
+                        case Currency.USD:
+                            TotalAmount += price;
+                            break;
+                    }
                     break;
             }
 
-            
+            TotalAmount = Math.Round(TotalAmount, 2);
             TotalSalesCount++;
         }
 
         public void RemoveSale(double price, Currency currency)
         {
-            switch ((int)currency)
+            switch (Currency)
             {
-                case (int)Currency.TRY:
-                    price *= 0.12;
+                case Currency.AZN:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount -= price;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount -= price * 0.12;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount -= price * 1.93;
+                            break;
+                        case Currency.USD:
+                            TotalAmount -= price * 1.70;
+                            break;
+                    }
                     break;
-                case (int)Currency.EUR:
-                    price *= 1.92;
+                case Currency.TRY:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount -= price * 8.13;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount -= price;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount -= price * 15.72;
+                            break;
+                        case Currency.USD:
+                            TotalAmount -= price * 13.82;
+                            break;
+                    }
                     break;
-                case (int)Currency.USD:
-                    price *= 1.7;
+                case Currency.EUR:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount -= price * 0.52;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount -= price * 0.064;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount -= price;
+                            break;
+                        case Currency.USD:
+                            TotalAmount -= price * 0.88;
+                            break;
+                    }
+                    break;
+                case Currency.USD:
+                    switch (currency)
+                    {
+                        case Currency.AZN:
+                            TotalAmount -= price * 0.59;
+                            break;
+                        case Currency.TRY:
+                            TotalAmount -= price * 0.072;
+                            break;
+                        case Currency.EUR:
+                            TotalAmount -= price * 1.14;
+                            break;
+                        case Currency.USD:
+                            TotalAmount -= price;
+                            break;
+                    }
                     break;
             }
 
-            TotalAmount -= price;
+            TotalAmount = Math.Round(TotalAmount, 2);
             TotalSalesCount--;
         }
 
         public override string ToString()
         {
-            return $"Satis sayi: {TotalSalesCount}\nKassadaki pul: {TotalAmount} AZN";
+            return $"Satis sayi: {TotalSalesCount}\nKassadaki pul: {TotalAmount} {Currency}";
         }
     }
 }
